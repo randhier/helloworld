@@ -1,6 +1,7 @@
 package helloworld
 
 import com.fasterxml.jackson.jr.ob._
+import world.World
 
 object Boot {
   // In scala, an object can be thought of as a singleton object
@@ -46,16 +47,6 @@ object Boot {
 
     println(message)
   }
-}
-
-// Unlike Java, scala files can contain multiple classes.
-class World(_id: Int, _name: String) {
-  // World is the primary "domain" type in this application. Yes,
-  // it is very contrived, but as this application grows, it will
-  // become a very important concept. Note that there is a much
-  // terser syntax available in scala; here it is expanded for clarity.
-  def id: Int = _id
-  def name: String = _name
 }
 
 class DatabaseClient(databasePath: String) {
