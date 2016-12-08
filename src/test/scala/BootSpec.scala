@@ -10,13 +10,13 @@ import org.scalatest.{ FlatSpec, Matchers }
 class BootSpec extends FlatSpec with Matchers {
   behavior of "World"
   it should "Return Mercury" in {
-    val world = new World(1, "Mercury")
+    def world = new World(1, "Mercury")
     val name = world.name
     name should be ("Mercury")
   }
 
   it should "Return Venus" in {
-    val world = new World(1, "Venus")
+    def world = new World(1, "Venus")
     val name = world.name
     name should be("Venus")
   }
