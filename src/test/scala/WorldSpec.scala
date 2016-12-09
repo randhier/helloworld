@@ -1,8 +1,8 @@
 package world
 
-import org.scalatest.{ FlatSpec, Matchers }
+import helloworld.UnitSpec
 
-class WorldSpec extends FlatSpec with Matchers {
+class WorldSpec extends UnitSpec {
   behavior of "World"
   it should "Return Mercury and id 1" in {
     def world = new World(1, "Mercury")
