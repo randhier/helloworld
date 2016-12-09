@@ -6,6 +6,7 @@ object HelloWorldBuild extends Build {
 
   lazy val dependencies = Seq(
     "org.scalatest" % "scalatest_2.11" % "2.2.6" % "test,it",
+    "org.scalamock" %% "scalamock-scalatest-support" % "3.2.2" % "test,it",
     "org.mockito" % "mockito-core" % "1.10.19",
     "com.fasterxml.jackson.jr" % "jackson-jr-objects" % "2.7.4"
   )
