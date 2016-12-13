@@ -1,7 +1,9 @@
 package helloworld
 
+import com.fasterxml.jackson.jr.ob.JSON
 import database.client.DatabaseClient
 import hello.Hello
+import world.World
 
 object Boot {
   // In scala, an object can be thought of as a singleton object
@@ -23,11 +25,24 @@ object Boot {
     // Parse command line arguments
     var id = args( 0 ).toInt
 
+    // Get Json from DB for ID and parse to fit World class format
+    var recordJSON = databaseClient.find(id)
+    var (key, value) = parseDBPlanet(recordJSON)
+    // New World class
+    var world = new World(key, value)
+
     // Hello class to get message
-    var hello = new Hello(databaseClient)
-    var message = hello.getMessage(id)
+    var hello = new Hello()
+    var message = hello.getMessage(world.id, world.name)
 
     println(message)
+  }
+
+  // Wanted this to be a part of the World class or a class on it's own
+  // that World called but I think it works best as a function of boot for now.
+  def parseDBPlanet(json: String) : (Int, String) = {
+    var parsedJSON = JSON.std.mapFrom(json)
+    (parsedJSON.get("key").asInstanceOf[Int], parsedJSON.get("value").asInstanceOf[String])
   }
 }
 
