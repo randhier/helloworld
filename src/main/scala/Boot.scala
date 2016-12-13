@@ -23,13 +23,13 @@ object Boot {
     var databaseClient = new DatabaseClient(databasePath)
 
     // Parse command line arguments
-    var id = args( 0 ).toInt
+    var inputID = args( 0 ).toInt
 
     // Get Json from DB for ID and parse to fit World class format
-    var recordJSON = databaseClient.find(id)
-    var (key, value) = parseDBPlanet(recordJSON)
+    var recordJSON = databaseClient.find(inputID)
+    var (id, planet) = parseDBPlanet(recordJSON)
     // New World class
-    var world = new World(key, value)
+    var world = new World(id, planet)
 
     // Hello class to get message
     var hello = new Hello()
